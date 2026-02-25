@@ -174,4 +174,24 @@ public class UserService {
     public void saveUser(User user) {
         userRepository.save(user);
     }
+    
+    public Result<Void> changePassword(Long userId, String oldPassword, String newPassword) {
+        try {
+            Optional<User> existingUserOpt = userRepository.findById(userId);
+            if (existingUserOpt.isEmpty()) {
+                return Result.error("用户不存在");
+            }
+            User existingUser = existingUserOpt.get();
+            if (!oldPassword.equals(existingUser.getPassword())) {
+                return Result.error("原密码错误");
+            }
+            existingUser.setPassword(newPassword);
+            existingUser.setUpdateTime(LocalDateTime.now());
+            userRepository.save(existingUser);
+            return Result.success();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Result.error("修改密码失败: " + e.getMessage());
+        }
+    }
 }

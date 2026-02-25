@@ -101,4 +101,14 @@ public class UserController {
         }
         return Result.success();
     }
+    
+    @PutMapping("/change-password")
+    public Result<Void> changePassword(
+            @RequestHeader("Authorization") String token,
+            @RequestBody Map<String, String> request) {
+        Long userId = jwtUtil.getUserId(token.replace("Bearer ", ""));
+        String oldPassword = request.get("oldPassword");
+        String newPassword = request.get("newPassword");
+        return userService.changePassword(userId, oldPassword, newPassword);
+    }
 }
