@@ -1,0 +1,35 @@
+# Maven
+big_event_back/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Node
+big_event_front/node_modules/
+big_event_front/dist/
+big_event_front/.vite/
+big_event_front/package-lock.json
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Uploads
+big_event_back/uploads/
