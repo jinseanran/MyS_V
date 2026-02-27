@@ -29,7 +29,7 @@ spring:
 
 jwt:
   secret: charity-donation-system-secret-key-for-graduation-project-2024
-  expiration: 3600000
+  expiration: 10800000
 
 file:
   upload:

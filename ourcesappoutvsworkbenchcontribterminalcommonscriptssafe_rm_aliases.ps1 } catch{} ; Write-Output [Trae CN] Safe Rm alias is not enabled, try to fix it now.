@@ -1,0 +1,801 @@
+warning: in the working copy of '功能需求文档.md', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/big_event_front b/big_event_front[m
+[1m--- a/big_event_front[m
+[1m+++ b/big_event_front[m
+[36m@@ -1 +1 @@[m
+[31m-Subproject commit 3e798b299474eee49c25a9288f9f726896f047f4[m
+[32m+[m[32mSubproject commit 3e798b299474eee49c25a9288f9f726896f047f4-dirty[m
+[1mdiff --git "a/\345\212\237\350\203\275\351\234\200\346\261\202\346\226\207\346\241\243.md" "b/\345\212\237\350\203\275\351\234\200\346\261\202\346\226\207\346\241\243.md"[m
+[1mindex adf7cbe..554f0f9 100644[m
+[1m--- "a/\345\212\237\350\203\275\351\234\200\346\261\202\346\226\207\346\241\243.md"[m
+[1m+++ "b/\345\212\237\350\203\275\351\234\200\346\261\202\346\226\207\346\241\243.md"[m
+[36m@@ -11,6 +11,7 @@[m
+ - 提高公益捐赠的透明度和可信度[m
+ - 实现捐赠记录的完整追踪[m
+ - 支持图片上传和管理功能，提升用户体验[m
+[32m+[m[32m- 提供美观的界面设计和良好的用户体验[m
+ [m
+ ---[m
+ [m
+[36m@@ -20,8 +21,8 @@[m
+ [m
+ | 角色 | 权限说明 |[m
+ |------|----------|[m
+[31m-| 普通用户 | 浏览项目、查看详情、进行捐赠、查看个人捐赠记录、修改个人信息、上传头像、发表评论、查看通知、生成捐赠证书、下载证书 |[m
+[31m-| 管理员 | 拥有普通用户所有权限，额外拥有用户管理、项目管理、数据统计、发布感谢留言、上传项目封面图片功能 |[m
+[32m+[m[32m| 普通用户 | 浏览项目、查看详情、进行捐赠、查看个人捐赠记录、修改个人信息、上传头像、修改密码、发表评论、查看通知、生成捐赠证书、下载证书 |[m
+[32m+[m[32m| 管理员 | 拥有普通用户所有权限，额外拥有用户管理、项目管理、数据统计、发布感谢留言、上传项目封面图片、系统设置（安全提醒）功能 |[m
+ [m
+ ---[m
+ [m
+[36m@@ -78,7 +79,22 @@[m
+   - 修改信息需要登录验证[m
+   - 头像上传后自动保存到数据库[m
+ [m
+[31m-#### 3.1.4 用户管理（管理员功能）[m
+[32m+[m[32m#### 3.1.4 修改密码（新增）[m
+[32m+[m[32m- **功能描述**：用户可以修改登录密码[m
+[32m+[m[32m- **输入字段**：[m
+[32m+[m[32m  - 原密码[m
+[32m+[m[32m  - 新密码[m
+[32m+[m[32m  - 确认密码[m
+[32m+[m[32m- **业务规则**：[m
+[32m+[m[32m  - 验证原密码是否正确[m
+[32m+[m[32m  - 新密码与确认密码必须一致[m
+[32m+[m[32m  - 密码修改成功后需要重新登录[m
+[32m+[m[32m  - 密码需满足一定强度要求[m
+[32m+[m[32m- **安全提示**：[m
+[32m+[m[32m  - 建议定期更换密码[m
+[32m+[m[32m  - 使用强密码（包含大小写字母、数字和特殊字符）[m
+[32m+[m
+[32m+[m[32m#### 3.1.5 用户管理（管理员功能）[m
+ - **功能描述**：管理员对系统用户进行管理[m
+ - **功能列表**：[m
+   - 查看所有用户列表[m
+[36m@@ -97,8 +113,14 @@[m
+ [m
+ ### 3.2 捐赠项目模块[m
+ [m
+[31m-#### 3.2.1 项目列表展示[m
+[32m+[m[32m#### 3.2.1 项目列表展示（新增UI美化）[m
+ - **功能描述**：展示所有可捐赠的项目列表[m
+[32m+[m[32m- **UI美化**（创新点）：[m
+[32m+[m[32m  - 所有项目卡片高度一致，采用Flex布局[m
+[32m+[m[32m  - 精美渐变色进度条（根据完成度显示不同颜色）[m
+[32m+[m[32m  - 卡片悬停动画效果[m
+[32m+[m[32m  - 图片缩放动画[m
+[32m+[m[32m  - 圆角设计和柔和阴影[m
+ - **展示信息**：[m
+   - 项目封面图片[m
+   - 项目名称[m
+[36m@@ -107,7 +129,7 @@[m
+   - 项目状态（进行中/已完成/已关闭）[m
+   - 目标金额[m
+   - 当前已筹金额[m
+[31m-  - 捐赠进度条[m
+[32m+[m[32m  - 捐赠进度条（渐变色）[m
+   - 捐赠人次[m
+   - 浏览次数[m
+ - **筛选功能**：[m
+[36m@@ -324,6 +346,43 @@[m
+   - 为管理决策提供数据支持[m
+   - 每日趋势图直观展示捐赠变化[m
+ [m
+[32m+[m[32m#### 3.6.3 系统设置（新增安全提醒）[m
+[32m+[m[32m- **功能描述**：管理员查看系统信息和安全提醒[m
+[32m+[m[32m- **安全提醒内容**（创新点）：[m
+[32m+[m[32m  - 提醒管理员定期更换密码[m
+[32m+[m[32m  - 建议使用强密码（包含大小写字母、数字和特殊字符）[m
+[32m+[m[32m  - 提醒不要在公共设备上登录管理员账户[m
+[32m+[m[32m  - 提醒操作完成后及时退出登录[m
+[32m+[m[32m  - 提醒保管好账户信息，不要泄露给他人[m
+[32m+[m[32m- **系统信息展示**：[m
+[32m+[m[32m  - 系统名称[m
+[32m+[m[32m  - 版本号[m
+[32m+[m[32m  - 后端地址[m
+[32m+[m[32m- **创新点说明**：[m
+[32m+[m[32m  - 增强系统安全性[m
+[32m+[m[32m  - 提高管理员安全意识[m
+[32m+[m[32m  - 符合信息安全最佳实践[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 3.7 首页美化（新增）[m
+[32m+[m
+[32m+[m[32m#### 3.7.1 首页UI设计（创新点）[m
+[32m+[m[32m- **功能描述**：精美的首页设计，提升用户第一印象[m
+[32m+[m[32m- **UI特色**：[m
+[32m+[m[32m  - 顶部导航栏（毛玻璃效果、渐变Logo、悬停下划线动画）[m
+[32m+[m[32m  - Hero区域（渐变背景、浮动图标动画、按钮悬停效果）[m
+[32m+[m[32m  - 公益分类卡片（悬停上移、渐变色边框、图片缩放、中心图标）[m
+[32m+[m[32m  - 数据统计区域（渐变背景、毛玻璃卡片）[m
+[32m+[m[32m  - 精美页脚（深色渐变、联系方式）[m
+[32m+[m[32m- **响应式设计**：[m
+[32m+[m[32m  - 适配桌面端、平板、手机等不同屏幕尺寸[m
+[32m+[m[32m- **创新点说明**：[m
+[32m+[m[32m  - 现代化UI设计，符合当前Web应用审美[m
+[32m+[m[32m  - 丰富的交互动画，提升用户体验[m
+[32m+[m[32m  - 渐变色彩搭配，视觉效果出色[m
+[32m+[m[32m  - 完全响应式，适配各种设备[m
+[32m+[m
+ ---[m
+ [m
+ ## 4. 数据库设计[m
+[36m@@ -458,6 +517,7 @@[m
+ - **图表库**：ECharts（数据统计可视化）[m
+ - **二维码**：QRCode.js（证书二维码生成）[m
+ - **图片下载**：html2canvas（证书下载）[m
+[32m+[m[32m- **CSS预处理器**：SCSS（样式美化）[m
+ [m
+ ### 5.3 系统架构[m
+ - **架构模式**：前后端分离[m
+[36m@@ -468,7 +528,7 @@[m
+ [m
+ ## 6. 创新点说明[m
+ [m
+[31m-本项目包含以下八个创新点，符合毕设要求：[m
+[32m+[m[32m本项目包含以下**12个创新点**，符合毕设要求：[m
+ [m
+ ### 6.1 匿名捐赠功能[m
+ - **功能描述**：用户在捐赠时可以选择是否匿名[m
+[36m@@ -515,7 +575,7 @@[m
+   - 增强视觉吸引力[m
+   - 灵活管理项目展示内容[m
+ [m
+[31m-### 6.7 完整支付流程模拟（新增）[m
+[32m+[m[32m### 6.7 完整支付流程模拟[m
+ - **功能描述**：点击"立即捐赠"后展示支付方式选择、支付二维码、捐赠成功弹窗的完整流程[m
+ - **创新价值**：[m
+   - 提升用户捐赠体验，模拟真实支付场景[m
+[36m@@ -523,7 +583,7 @@[m
+   - 点击"查看详情"可直接跳转到捐赠记录页面[m
+   - 无需真实支付接口，降低开发复杂度，适合毕设场景[m
+ [m
+[31m-### 6.8 累计捐赠金额实时计算（新增）[m
+[32m+[m[32m### 6.8 累计捐赠金额实时计算[m
+ - **功能描述**：从捐赠记录表中实时计算用户的累计捐赠金额，确保数据准确性[m
+ - **创新价值**：[m
+   - 解决历史数据累计捐赠不准确的问题[m
+[36m@@ -531,7 +591,7 @@[m
+   - 数据实时同步，可靠性高[m
+   - 为用户提供准确的捐赠数据展示[m
+ [m
+[31m-### 6.9 登录页面美化（新增）[m
+[32m+[m[32m### 6.9 登录页面美化[m
+ - **功能描述**：登录页面支持自定义背景图片、大学名称水印、半透明毛玻璃效果[m
+ - **创新价值**：[m
+   - 提升系统视觉美观度[m
+[36m@@ -539,6 +599,30 @@[m
+   - 增强用户第一印象[m
+   - 水印展示大学名称，突出毕设特色[m
+ [m
+[32m+[m[32m### 6.10 修改密码功能（新增）[m
+[32m+[m[32m- **功能描述**：用户可以修改登录密码，验证原密码后设置新密码[m
+[32m+[m[32m- **创新价值**：[m
+[32m+[m[32m  - 增强账户安全性[m
+[32m+[m[32m  - 符合信息安全最佳实践[m
+[32m+[m[32m  - 提供完整的用户账户管理功能[m
+[32m+[m
+[32m+[m[32m### 6.11 系统设置安全提醒（新增）[m
+[32m+[m[32m- **功能描述**：管理员页面显示安全提醒，提示管理员注意账户安全[m
+[32m+[m[32m- **创新价值**：[m
+[32m+[m[32m  - 增强系统安全性[m
+[32m+[m[32m  - 提高管理员安全意识[m
+[32m+[m[32m  - 防止安全事故发生[m
+[32m+[m[32m  - 体现系统的专业性和完整性[m
+[32m+[m
+[32m+[m[32m### 6.12 首页和项目列表UI美化（新增）[m
+[32m+[m[32m- **功能描述**：首页和项目列表页面采用现代化UI设计，包含丰富的交互动画[m
+[32m+[m[32m- **创新价值**：[m
+[32m+[m[32m  - 现代化UI设计，符合当前Web应用审美[m
+[32m+[m[32m  - 丰富的交互动画，提升用户体验[m
+[32m+[m[32m  - 渐变色彩搭配，视觉效果出色[m
+[32m+[m[32m  - 完全响应式，适配各种设备[m
+[32m+[m[32m  - 项目卡片高度一致，布局整齐美观[m
+[32m+[m
+ ---[m
+ [m
+ ## 7. 非功能需求[m
+[36m@@ -548,6 +632,7 @@[m
+ - 并发支持：支持至少100个用户同时在线[m
+ - 数据处理：捐赠记录查询响应时间不超过1秒[m
+ - 文件上传：图片上传响应时间不超过5秒[m
+[32m+[m[32m- 动画流畅度：交互动画帧率不低于60fps[m
+ [m
+ ### 7.2 安全需求[m
+ - 用户密码加密存储[m
+[36m@@ -556,18 +641,23 @@[m
+ - 防止SQL注入、XSS攻击[m
+ - 文件上传限制格式和大小[m
+ - 静态资源访问安全配置[m
+[32m+[m[32m- 密码修改功能验证原密码[m
+[32m+[m[32m- 管理员账户安全提醒[m
+ [m
+ ### 7.3 可用性需求[m
+ - 界面简洁美观，操作流程清晰[m
+ - 提供友好的错误提示[m
+ - 支持主流浏览器（Chrome、Firefox、Edge）[m
+ - 图片加载失败时显示默认占位图[m
+[32m+[m[32m- 完全响应式设计，适配各种设备[m
+[32m+[m[32m- 交互动画流畅自然[m
+ [m
+ ### 7.4 可维护性需求[m
+ - 代码结构清晰，注释完整[m
+ - 遵循编码规范[m
+ - 前后端接口文档完整[m
+ - 使用DTO模式处理数据传输[m
+[32m+[m[32m- 组件化开发，易于维护和扩展[m
+ [m
+ ---[m
+ [m
+[36m@@ -576,13 +666,14 @@[m
+ ### 8.1 功能清单[m
+ | 模块 | 子模块 | 功能数量 |[m
+ |------|--------|----------|[m
+[31m-| 用户管理 | 注册、登录（含美化）、个人信息（含头像上传、累计捐赠实时计算）、用户管理 | 4 |[m
+[31m-| 捐赠项目 | 列表、详情、捐赠（含完整支付流程）、封面图片管理、感谢留言 | 5 |[m
+[32m+[m[32m| 用户管理 | 注册、登录（含美化）、个人信息（含头像上传、累计捐赠实时计算）、修改密码、用户管理 | 5 |[m
+[32m+[m[32m| 捐赠项目 | 列表（含UI美化）、详情、捐赠（含完整支付流程）、封面图片管理、感谢留言 | 5 |[m
+ | 捐赠记录 | 我的记录、捐赠证书（含下载） | 2 |[m
+ | 评论互动 | 发表、列表、点赞、删除 | 4 |[m
+ | 通知管理 | 列表、未读计数、标记已读 | 3 |[m
+[31m-| 管理员功能 | 项目管理、数据统计 | 2 |[m
+[31m-| **总计** | | **20个核心功能** |[m
+[32m+[m[32m| 管理员功能 | 项目管理、数据统计、系统设置（安全提醒） | 3 |[m
+[32m+[m[32m| 首页美化 | 首页UI设计 | 1 |[m
+[32m+[m[32m| **总计** | | **23个核心功能** |[m
+ [m
+ ---[m
+ [m
+[36m@@ -605,31 +696,36 @@[m
+ | 第一阶段 | 需求分析与数据库设计 | 1周 |[m
+ | 第二阶段 | 后端接口开发 | 3周 |[m
+ | 第三阶段 | 前端页面开发 | 3周 |[m
+[31m-| 第四阶段 | 系统联调与测试 | 1周 |[m
+[31m-| 第五阶段 | 论文撰写与答辩准备 | 1周 |[m
+[31m-| **总计** | | **9周** |[m
+[32m+[m[32m| 第四阶段 | UI美化与交互动画 | 1周 |[m
+[32m+[m[32m| 第五阶段 | 系统联调与测试 | 1周 |[m
+[32m+[m[32m| 第六阶段 | 论文撰写与答辩准备 | 1周 |[m
+[32m+[m[32m| **总计** | | **10周** |[m
+ [m
+ ---[m
+ [m
+ ## 11. 总结[m
+ [m
+[31m-本公益捐赠管理系统实现了**6大功能模块、20个核心功能**，包括：[m
+[31m-- 用户管理模块（注册、登录、个人信息、用户管理）[m
+[32m+[m[32m本公益捐赠管理系统实现了**7大功能模块、23个核心功能**，包括：[m
+[32m+[m[32m- 用户管理模块（注册、登录、个人信息、修改密码、用户管理）[m
+ - 捐赠项目模块（列表、详情、捐赠、封面图片管理、感谢留言）[m
+ - 捐赠记录模块（我的记录、捐赠证书）[m
+ - 评论互动模块（发表、列表、点赞、删除）[m
+ - 通知管理模块（列表、未读计数、标记已读）[m
+[31m-- 管理员功能模块（项目管理、数据统计）[m
+[32m+[m[32m- 管理员功能模块（项目管理、数据统计、系统设置）[m
+[32m+[m[32m- 首页美化模块（现代化UI设计）[m
+ [m
+[31m-系统采用Spring Boot 3 + Vue 3的技术栈，符合本科毕设的功能复杂度要求。系统包含**9个创新点**：[m
+[32m+[m[32m系统采用Spring Boot 3 + Vue 3的技术栈，符合本科毕设的功能复杂度要求。系统包含**12个创新点**：[m
+ 1. 匿名捐赠功能[m
+ 2. 数据统计与可视化（含每日趋势图）[m
+ 3. 捐赠证书生成与下载[m
+ 4. 感谢留言功能[m
+ 5. 头像上传与管理[m
+ 6. 项目封面图片管理[m
+[31m-7. 完整支付流程模拟（新增）[m
+[31m-8. 累计捐赠金额实时计算（新增）[m
+[31m-9. 登录页面美化（新增）[m
+[31m-[m
+[31m-系统功能完整、界面美观、技术先进，具有较高的实用价值和应用前景，完全能够满足毕设答辩要求。[m
+[32m+[m[32m7. 完整支付流程模拟[m
+[32m+[m[32m8. 累计捐赠金额实时计算[m
+[32m+[m[32m9. 登录页面美化[m
+[32m+[m[32m10. 修改密码功能[m
+[32m+[m[32m11. 系统设置安全提醒[m
+[32m+[m[32m12. 首页和项目列表UI美化[m
+[32m+[m
+[32m+[m[32m系统功能完整、界面美观、技术先进、交互流畅，具有较高的实用价值和应用前景，完全能够满足毕设答辩要求。[m
+
+                   SSUUMMMMAARRYY OOFF LLEESSSS CCOOMMMMAANNDDSS
+
+      Commands marked with * may be preceded by a number, _N.
+      Notes in parentheses indicate the behavior if _N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MMOOVVIINNGG
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or _N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or _N lines).
+  ESC-j             *  Forward  one file line (or _N file lines).
+  ESC-k             *  Backward one file line (or _N file lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or _N lines).
+  b  ^B  ESC-v      *  Backward one window (or _N lines).
+  z                 *  Forward  one window (and set window to _N).
+  w                 *  Backward one window (and set window to _N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  ESC-b             *  Backward one window, but don't stop at beginning-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to _N).
+  u  ^U             *  Backward one half-window (and set half-window to _N).
+  ESC-)  RightArrow *  Right one half screen width (or _N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or _N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  ESC-f                Like F but ring the bell when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          SSEEAARRCCHHIINNGG
+
+  /_p_a_t_t_e_r_n          *  Search forward for (_N-th) matching line.
+  ?_p_a_t_t_e_r_n          *  Search backward for (_N-th) matching line.
+  n                 *  Repeat previous search (for _N-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+  ESC-n             *  Repeat previous search, spanning files.
+  ESC-N             *  Repeat previous search, reverse dir. & spanning files.
+  ^O^N  ^On         *  Search forward for (_N-th) OSC8 hyperlink.
+  ^O^P  ^Op         *  Search backward for (_N-th) OSC8 hyperlink.
+  ^O^L  ^Ol            Jump to the currently selected OSC8 hyperlink.
+  ESC-u                Undo (toggle) search highlighting.
+  ESC-U                Clear search highlighting.
+  &_p_a_t_t_e_r_n          *  Display only matching lines.
+        ---------------------------------------------------
+		Search is case-sensitive unless changed with -i or -I.
+        A search pattern may begin with one or more of:
+        ^N or !  Search for NON-matching lines.
+        ^E or *  Search multiple files (pass thru END OF FILE).
+        ^F or @  Start search at FIRST file (for /) or last file (for ?).
+        ^K       Highlight matches, but don't move (KEEP position).
+        ^R       Don't use REGULAR EXPRESSIONS.
+        ^S _n     Search for match in _n-th parenthesized subpattern.
+        ^W       WRAP search if no match found.
+        ^L       Enter next character literally into pattern.
+ ---------------------------------------------------------------------------
+
+                           JJUUMMPPIINNGG
+
+  g  <  ESC-<       *  Go to first line in file (or line _N).
+  G  >  ESC->       *  Go to last line in file (or line _N).
+  p  %              *  Go to beginning of file (or _N percent into file).
+  t                 *  Go to the (_N-th) next tag.
+  T                 *  Go to the (_N-th) previous tag.
+  {  (  [           *  Find close bracket } ) ].
+  }  )  ]           *  Find open bracket { ( [.
+  ESC-^F _<_c_1_> _<_c_2_>  *  Find close bracket _<_c_2_>.
+  ESC-^B _<_c_1_> _<_c_2_>  *  Find open bracket _<_c_1_>.
+        ---------------------------------------------------
+        Each "find close bracket" command goes forward to the close bracket 
+          matching the (_N-th) open bracket in the top line.
+        Each "find open bracket" command goes backward to the open bracket 
+          matching the (_N-th) close bracket in the bottom line.
+
+  m_<_l_e_t_t_e_r_>            Mark the current top line with <letter>.
+  M_<_l_e_t_t_e_r_>            Mark the current bottom line with <letter>.
+  '_<_l_e_t_t_e_r_>            Go to a previously marked position.
+  ''                   Go to the previous position.
+  ^X^X                 Same as '.
+  ESC-m_<_l_e_t_t_e_r_>        Clear a mark.
+        ---------------------------------------------------
+        A mark is any upper-case or lower-case letter.
+        Certain marks are predefined:
+             ^  means  beginning of the file
+             $  means  end of the file
+ ---------------------------------------------------------------------------
+
+                        CCHHAANNGGIINNGG FFIILLEESS
+
+  :e [_f_i_l_e]            Examine a new file.
+  ^X^V                 Same as :e.
+  :n                *  Examine the (_N-th) next file from the command line.
+  :p                *  Examine the (_N-th) previous file from the command line.
+  :x                *  Examine the first (or _N-th) file from the command line.
+  ^O^O                 Open the currently selected OSC8 hyperlink.
+  :d                   Delete the current file from the command line list.
+  =  ^G  :f            Print current file name.
+ ---------------------------------------------------------------------------
+
+                    MMIISSCCEELLLLAANNEEOOUUSS CCOOMMMMAANNDDSS
+
+  -_<_f_l_a_g_>              Toggle a command line option [see OPTIONS below].
+  --_<_n_a_m_e_>             Toggle a command line option, by name.
+  __<_f_l_a_g_>              Display the setting of a command line option.
+  ___<_n_a_m_e_>             Display the setting of an option, by name.
+  +_c_m_d                 Execute the less cmd each time a new file is examined.
+
+  !_c_o_m_m_a_n_d             Execute the shell command with $SHELL.
+  #_c_o_m_m_a_n_d             Execute the shell command, expanded like a prompt.
+  |XX_c_o_m_m_a_n_d            Pipe file between current pos & mark XX to shell command.
+  s _f_i_l_e               Save input to a file.
+  v                    Edit the current file with $VISUAL or $EDITOR.
+  V                    Print version number of "less".
+ ---------------------------------------------------------------------------
+
+                           OOPPTTIIOONNSS
+
+        Most options may be changed either on the command line,
+        or from within less by using the - or -- command.
+        Options may be given in one of two forms: either a single
+        character preceded by a -, or a name preceded by --.
+
+  -?  ........  --help
+                  Display help (from command line).
+  -a  ........  --search-skip-screen
+                  Search skips current screen.
+  -A  ........  --SEARCH-SKIP-SCREEN
+                  Search starts just after target line.
+  -b [_N]  ....  --buffers=[_N]
+                  Number of buffers.
+  -B  ........  --auto-buffers
+                  Don't automatically allocate buffers for pipes.
+  -c  ........  --clear-screen
+                  Repaint by clearing rather than scrolling.
+  -d  ........  --dumb
+                  Dumb terminal.
+  -D xx_c_o_l_o_r  .  --color=xx_c_o_l_o_r
+                  Set screen colors.
+  -e  -E  ....  --quit-at-eof  --QUIT-AT-EOF
+                  Quit at end of file.
+  -f  ........  --force
+                  Force open non-regular files.
+  -F  ........  --quit-if-one-screen
+                  Quit if entire file fits on first screen.
+  -g  ........  --hilite-search
+                  Highlight only last match for searches.
+  -G  ........  --HILITE-SEARCH
+                  Don't highlight any matches for searches.
+  -h [_N]  ....  --max-back-scroll=[_N]
+                  Backward scroll limit.
+  -i  ........  --ignore-case
+                  Ignore case in searches that do not contain uppercase.
+  -I  ........  --IGNORE-CASE
+                  Ignore case in all searches.
+  -j [_N]  ....  --jump-target=[_N]
+                  Screen position of target lines.
+  -J  ........  --status-column
+                  Display a status column at left edge of screen.
+  -k _f_i_l_e  ...  --lesskey-file=_f_i_l_e
+                  Use a compiled lesskey file.
+  -K  ........  --quit-on-intr
+                  Exit less in response to ctrl-C.
+  -L  ........  --no-lessopen
+                  Ignore the LESSOPEN environment variable.
+  -m  -M  ....  --long-prompt  --LONG-PROMPT
+                  Set prompt style.
+  -n .........  --line-numbers
+
+                   SSUUMMMMAARRYY OOFF LLEESSSS CCOOMMMMAANNDDSS
+
+      Commands marked with * may be preceded by a number, _N.
+      Notes in parentheses indicate the behavior if _N is given.
+      A key preceded by a caret indicates the Ctrl key; thus ^K is ctrl-K.
+
+  h  H                 Display this help.
+  q  :q  Q  :Q  ZZ     Exit.
+ ---------------------------------------------------------------------------
+
+                           MMOOVVIINNGG
+
+  e  ^E  j  ^N  CR  *  Forward  one line   (or _N lines).
+  y  ^Y  k  ^K  ^P  *  Backward one line   (or _N lines).
+  ESC-j             *  Forward  one file line (or _N file lines).
+  ESC-k             *  Backward one file line (or _N file lines).
+  f  ^F  ^V  SPACE  *  Forward  one window (or _N lines).
+  b  ^B  ESC-v      *  Backward one window (or _N lines).
+  z                 *  Forward  one window (and set window to _N).
+  w                 *  Backward one window (and set window to _N).
+  ESC-SPACE         *  Forward  one window, but don't stop at end-of-file.
+  ESC-b             *  Backward one window, but don't stop at beginning-of-file.
+  d  ^D             *  Forward  one half-window (and set half-window to _N).
+  u  ^U             *  Backward one half-window (and set half-window to _N).
+  ESC-)  RightArrow *  Right one half screen width (or _N positions).
+  ESC-(  LeftArrow  *  Left  one half screen width (or _N positions).
+  ESC-}  ^RightArrow   Right to last column displayed.
+  ESC-{  ^LeftArrow    Left  to first column.
+  F                    Forward forever; like "tail -f".
+  ESC-F                Like F but stop when search pattern is found.
+  ESC-f                Like F but ring the bell when search pattern is found.
+  r  ^R  ^L            Repaint screen.
+  R                    Repaint screen, discarding buffered input.
+        ---------------------------------------------------
+        Default "window" is the screen height.
+        Default "half-window" is half of the screen height.
+ ---------------------------------------------------------------------------
+
+                          SSEEAARRCCHHIINNGG
+
+  /_p_a_t_t_e_r_n          *  Search forward for (_N-th) matching line.
+  ?_p_a_t_t_e_r_n          *  Search backward for (_N-th) matching line.
+  n                 *  Repeat previous search (for _N-th occurrence).
+  N                 *  Repeat previous search in reverse direction.
+  ESC-n             *  Repeat previous search, spanning files.
+  ESC-N             *  Repeat previous search, reverse dir. & spanning files.
+  ^O^N  ^On         *  Search forward for (_N-th) OSC8 hyperlink.
+  ^O^P  ^Op         *  Search backward for (_N-th) OSC8 hyperlink.
+  ^O^L  ^Ol            Jump to the currently selected OSC8 hyperlink.
+  ESC-u                Undo (toggle) search highlighting.
+  ESC-U                Clear search highlighting.
+  &_p_a_t_t_e_r_n          *  Display only matching lines.
+        ---------------------------------------------------
+		Search is case-sensitive unless changed with -i or -I.
+        A search pattern may begin with one or more of:
+        ^N or !  Search for NON-matching lines.
+        ^E or *  Search multiple files (pass thru END OF FILE).
+        ^F or @  Start search at FIRST file (for /) or last file (for ?).
+        ^K       Highlight matches, but don't move (KEEP position).
+        ^R       Don't use REGULAR EXPRESSIONS.
+        ^S _n     Search for match in _n-th parenthesized subpattern.
+        ^W       WRAP search if no match found.
+        ^L       Enter next character literally into pattern.
+ ---------------------------------------------------------------------------
+
+                           JJUUMMPPIINNGG
+
+  g  <  ESC-<       *  Go to first line in file (or line _N).
+  G  >  ESC->       *  Go to last line in file (or line _N).
+  p  %              *  Go to beginning of file (or _N percent into file).
+  t                 *  Go to the (_N-th) next tag.
+  T                 *  Go to the (_N-th) previous tag.
+  {  (  [           *  Find close bracket } ) ].
+  }  )  ]           *  Find open bracket { ( [.
+  ESC-^F _<_c_1_> _<_c_2_>  *  Find close bracket _<_c_2_>.
+  ESC-^B _<_c_1_> _<_c_2_>  *  Find open bracket _<_c_1_>.
+        ---------------------------------------------------
+        Each "find close bracket" command goes forward to the close bracket 
+          matching the (_N-th) open bracket in the top line.
+        Each "find open bracket" command goes backward to the open bracket 
+          matching the (_N-th) close bracket in the bottom line.
+
+  m_<_l_e_t_t_e_r_>            Mark the current top line with <letter>.
+  M_<_l_e_t_t_e_r_>            Mark the current bottom line with <letter>.
+  '_<_l_e_t_t_e_r_>            Go to a previously marked position.
+  ''                   Go to the previous position.
+  ^X^X                 Same as '.
+  ESC-m_<_l_e_t_t_e_r_>        Clear a mark.
+        ---------------------------------------------------
+        A mark is any upper-case or lower-case letter.
+        Certain marks are predefined:
+             ^  means  beginning of the file
+             $  means  end of the file
+ ---------------------------------------------------------------------------
+
+                        CCHHAANNGGIINNGG FFIILLEESS
+
+  :e [_f_i_l_e]            Examine a new file.
+  ^X^V                 Same as :e.
+  :n                *  Examine the (_N-th) next file from the command line.
+  :p                *  Examine the (_N-th) previous file from the command line.
+  :x                *  Examine the first (or _N-th) file from the command line.
+  ^O^O                 Open the currently selected OSC8 hyperlink.
+  :d                   Delete the current file from the command line list.
+  =  ^G  :f            Print current file name.
+ ---------------------------------------------------------------------------
+
+                    MMIISSCCEELLLLAANNEEOOUUSS CCOOMMMMAANNDDSS
+
+  -_<_f_l_a_g_>              Toggle a command line option [see OPTIONS below].
+  --_<_n_a_m_e_>             Toggle a command line option, by name.
+  __<_f_l_a_g_>              Display the setting of a command line option.
+  ___<_n_a_m_e_>             Display the setting of an option, by name.
+  +_c_m_d                 Execute the less cmd each time a new file is examined.
+
+  !_c_o_m_m_a_n_d             Execute the shell command with $SHELL.
+  #_c_o_m_m_a_n_d             Execute the shell command, expanded like a prompt.
+  |XX_c_o_m_m_a_n_d            Pipe file between current pos & mark XX to shell command.
+  s _f_i_l_e               Save input to a file.
+  v                    Edit the current file with $VISUAL or $EDITOR.
+  V                    Print version number of "less".
+ ---------------------------------------------------------------------------
+
+                           OOPPTTIIOONNSS
+
+        Most options may be changed either on the command line,
+        or from within less by using the - or -- command.
+        Options may be given in one of two forms: either a single
+        character preceded by a -, or a name preceded by --.
+
+  -?  ........  --help
+                  Display help (from command line).
+  -a  ........  --search-skip-screen
+                  Search skips current screen.
+  -A  ........  --SEARCH-SKIP-SCREEN
+                  Search starts just after target line.
+  -b [_N]  ....  --buffers=[_N]
+                  Number of buffers.
+  -B  ........  --auto-buffers
+                  Don't automatically allocate buffers for pipes.
+  -c  ........  --clear-screen
+                  Repaint by clearing rather than scrolling.
+  -d  ........  --dumb
+                  Dumb terminal.
+  -D xx_c_o_l_o_r  .  --color=xx_c_o_l_o_r
+                  Set screen colors.
+  -e  -E  ....  --quit-at-eof  --QUIT-AT-EOF
+                  Quit at end of file.
+  -f  ........  --force
+                  Force open non-regular files.
+  -F  ........  --quit-if-one-screen
+                  Quit if entire file fits on first screen.
+  -g  ........  --hilite-search
+                  Highlight only last match for searches.
+  -G  ........  --HILITE-SEARCH
+                  Don't highlight any matches for searches.
+  -h [_N]  ....  --max-back-scroll=[_N]
+                  Backward scroll limit.
+  -i  ........  --ignore-case
+                  Ignore case in searches that do not contain uppercase.
+  -I  ........  --IGNORE-CASE
+                  Ignore case in all searches.
+  -j [_N]  ....  --jump-target=[_N]
+                  Screen position of target lines.
+  -J  ........  --status-column
+                  Display a status column at left edge of screen.
+  -k _f_i_l_e  ...  --lesskey-file=_f_i_l_e
+                  Use a compiled lesskey file.
+  -K  ........  --quit-on-intr
+                  Exit less in response to ctrl-C.
+  -L  ........  --no-lessopen
+                  Ignore the LESSOPEN environment variable.
+  -m  -M  ....  --long-prompt  --LONG-PROMPT
+                  Set prompt style.
+  -n .........  --line-numbers
+                  Suppress line numbers in prompts and messages.
+  -N .........  --LINE-NUMBERS
+                  Display line number at start of each line.
+  -o [_f_i_l_e] ..  --log-file=[_f_i_l_e]
+                  Copy to log file (standard input only).
+  -O [_f_i_l_e] ..  --LOG-FILE=[_f_i_l_e]
+                  Copy to log file (unconditionally overwrite).
+  -p _p_a_t_t_e_r_n .  --pattern=[_p_a_t_t_e_r_n]
+                  Start at pattern (from command line).
+  -P [_p_r_o_m_p_t]   --prompt=[_p_r_o_m_p_t]
+                  Define new prompt.
+  -q  -Q  ....  --quiet  --QUIET  --silent --SILENT
+                  Quiet the terminal bell.
+  -r  -R  ....  --raw-control-chars  --RAW-CONTROL-CHARS
+                  Output "raw" control characters.
+  -s  ........  --squeeze-blank-lines
+                  Squeeze multiple blank lines.
+  -S  ........  --chop-long-lines
+                  Chop (truncate) long lines rather than wrapping.
+  -t _t_a_g  ....  --tag=[_t_a_g]
+                  Find a tag.
+  -T [_t_a_g_s_f_i_l_e] --tag-file=[_t_a_g_s_f_i_l_e]
+                  Use an alternate tags file.
+  -u  -U  ....  --underline-special  --UNDERLINE-SPECIAL
+                  Change handling of backspaces, tabs and carriage returns.
+  -V  ........  --version
+                  Display the version number of "less".
+  -w  ........  --hilite-unread
+                  Highlight first new line after forward-screen.
+  -W  ........  --HILITE-UNREAD
+                  Highlight first new line after any forward movement.
+  -x [_N[,...]]  --tabs=[_N[,...]]
+                  Set tab stops.
+  -X  ........  --no-init
+                  Don't use termcap init/deinit strings.
+  -y [_N]  ....  --max-forw-scroll=[_N]
+                  Forward scroll limit.
+  -z [_N]  ....  --window=[_N]
+                  Set size of window.
+  -" [_c[_c]]  .  --quotes=[_c[_c]]
+                  Set shell quote characters.
+  -~  ........  --tilde
+                  Don't display tildes after end of file.
+  -# [_N]  ....  --shift=[_N]
+                  Set horizontal scroll amount (0 = one half screen width).
+
+                --autosave=[_m_/_!_*]
+                  Actions which cause the history file to be saved.
+                --exit-follow-on-close
+                  Exit F command on a pipe when writer closes pipe.
+                --file-size
+                  Automatically determine the size of the input file.
+                --follow-name
+                  The F command changes files if the input file is renamed.
+                --form-feed
+                  Stop scrolling when a form feed character is reached.
+                --header=[_L[,_C[,_N]]]
+                  Use _L lines (starting at line _N) and _C columns as headers.
+                --incsearch
+                  Search file as each pattern character is typed in.
+                --intr=[_C]
+                  Use _C instead of ^X to interrupt a read.
+                --lesskey-context=_t_e_x_t
+                  Use lesskey source file contents.
+                --lesskey-src=_f_i_l_e
+                  Use a lesskey source file.
+                --line-num-width=[_N]
+                  Set the width of the -N line number field to _N characters.
+                --match-shift=[_N]
+                  Show at least _N characters to the left of a search match.
+                --modelines=[_N]
+                  Read _N lines from the input file and look for vim modelines.
+                --mouse
+                  Enable mouse input.
+                --no-edit-warn
+                  Don't warn when using v command on a file opened via LESSOPEN.
+                --no-keypad
+                  Don't send termcap keypad init/deinit strings.
+                --no-histdups
+                  Remove duplicates from command history.
+                --no-number-headers
+                  Don't give line numbers to header lines.
+                --no-paste
+                  Ignore pasted input.
+                --no-search-header-lines
+                  Searches do not include header lines.
+                --no-search-header-columns
+                  Searches do not include header columns.
+                --no-search-headers
+                  Searches do not include header lines or columns.
+                --no-vbell
+                  Disable the terminal's visual bell.
+                --redraw-on-quit
+                  Redraw final screen when quitting.
+                --rscroll=[_C]
+                  Set the character used to mark truncated lines.
+                --save-marks
+                  Retain marks across invocations of less.
+                --search-options=[EFKNRW-]
+                  Set default options for every search.
+                --show-preproc-errors
+                  Display a message if preprocessor exits with an error status.
+                --proc-backspace
+                  Process backspaces for bold/underline.
+                --PROC-BACKSPACE
+                  Treat backspaces as control characters.
+                --proc-return
+                  Delete carriage returns before newline.
+                --PROC-RETURN
+                  Treat carriage returns as control characters.
+                --proc-tab
+                  Expand tabs to spaces.
+                --PROC-TAB
+                  Treat tabs as control characters.
+                --status-col-width=[_N]
+                  Set the width of the -J status column to _N characters.
+                --status-line
+                  Highlight or color the entire line containing a mark.
+                --use-backslash
+                  Subsequent options use backslash as escape char.
+                --use-color
+                  Enables colored text.
+                --wheel-lines=[_N]
+                  Each click of the mouse wheel moves _N lines.
+                --wordwrap
+                  Wrap lines at spaces.
+
+
+ ---------------------------------------------------------------------------
+
+                          LLIINNEE EEDDIITTIINNGG
+
+        These keys can be used to edit text being entered 
+        on the "command line" at the bottom of the screen.
+
+ RightArrow ..................... ESC-l ... Move cursor right one character.
+ LeftArrow ...................... ESC-h ... Move cursor left one character.
+ ctrl-RightArrow  ESC-RightArrow  ESC-w ... Move cursor right one word.
+ ctrl-LeftArrow   ESC-LeftArrow   ESC-b ... Move cursor left one word.
+ HOME ........................... ESC-0 ... Move cursor to start of line.
+ END ............................ ESC-$ ... Move cursor to end of line.
+ BACKSPACE ................................ Delete char to left of cursor.
+ DELETE ......................... ESC-x ... Delete char under cursor.
+ ctrl-BACKSPACE   ESC-BACKSPACE ........... Delete word to left of cursor.
+ ctrl-DELETE .... ESC-DELETE .... ESC-X ... Delete word under cursor.
+ ctrl-U ......... ESC (MS-DOS only) ....... Delete entire line.
+ UpArrow ........................ ESC-k ... Retrieve previous command line.
+ DownArrow ...................... ESC-j ... Retrieve next command line.
+ TAB ...................................... Complete filename & cycle.
+ SHIFT-TAB ...................... ESC-TAB   Complete filename & reverse cycle.
+ ctrl-L ................................... Complete filename, list all.
